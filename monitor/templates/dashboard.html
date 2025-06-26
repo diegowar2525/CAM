@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoreo de Calidad del Aire</title>
+</head>
+<body>
+    <h1>Monitoreo de Calidad del Aire</h1>
+
+    <!-- Botón para iniciar la captura de datos -->
+    <button id="iniciar-captura" onclick="iniciarCaptura()">Iniciar Captura</button>
+
+    <!-- Sección para mostrar los datos -->
+    <h2>Últimos datos capturados</h2>
+    <table border="1" id="tabla-datos">
+        <tr>
+            <th>Fecha</th>
+            <th>CO₂ (ppm)</th>
+            <th>Humo (%)</th>
+            <th>Temperatura (°C)</th>
+        </tr>
+        <!-- Aquí se llenarán los datos dinámicamente -->
+    </table>
+
+    <script>
+        // Función para iniciar la captura de datos
+        function iniciarCaptura() {
+            fetch('/iniciar-captura/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        alert('Captura iniciada correctamente.');
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+        }
+
+        // Función para obtener los últimos datos de la base de datos
+        function obtenerDatos() {
+            fetch('/obtener-datos/')
+                .then(response => response.json())
+                .then(data => {
+                    const tabla = document.getElementById('tabla-datos');
+                    // Limpiar la tabla antes de agregar los nuevos datos
+                    tabla.innerHTML = `
+                        <tr>
+                            <th>Fecha</th>
+                            <th>CO₂ (ppm)</th>
+                            <th>Humo (%)</th>
+                            <th>Temperatura (°C)</th>
+                        </tr>
+                    `;
+
+                    // Agregar los nuevos datos a la tabla
+                    data.datos.forEach(dato => {
+                        const fila = tabla.insertRow();
+                        fila.innerHTML = `
+                            <td>${dato.timestamp}</td>
+                            <td>${dato.co2}</td>
+                            <td>${dato.humo}</td>
+                            <td>${dato.temperatura}</td>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos:', error);
+                });
+        }
+
+        // Llamada inicial para cargar los datos
+        obtenerDatos();
+
+        // Actualizar los datos cada 5 segundos para mostrar los nuevos datos
+        setInterval(obtenerDatos, 5000);
+    </script>
+</body>
+</html>
