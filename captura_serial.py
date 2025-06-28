@@ -58,7 +58,7 @@ while True:
         temperatura = validar_float(datos.get('temp'), -10, 80)
         humedad = validar_float(datos.get('hum'), 0, 100)
 
-        fecha_actual = timezone.now()
+
 
         if not all([co2 is not None, humo is not None, temperatura is not None, humedad is not None]):
             print("❌ Datos inválidos, se omite esta línea:", {
@@ -73,19 +73,15 @@ while True:
             co2=co2,
             humo=humo,
             temperatura=temperatura,
-            humedad=humedad,
-            fecha=fecha_actual
+            humedad=humedad
         )
 
         print("✅ Datos guardados:", {
             "co2": co2,
             "humo": humo,
             "temperatura": temperatura,
-            "humedad": humedad,
-            "fecha": fecha_actual
+            "humedad": humedad
         })
-
-        time.sleep(2)  # Esperar como el Arduino
 
     except serial.SerialException as e:
         print("❌ Error con el puerto serial:", e)

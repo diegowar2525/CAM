@@ -15,7 +15,7 @@ def iniciar_captura(request):
 def obtener_datos(request):
     # Recupera los últimos datos de calidad del aire
     datos = AirQuality.objects.order_by('-fecha')[:10]
-    datos_json = list(datos.values('fecha', 'co2', 'humo', 'temperatura'))
+    datos_json = list(datos.values('fecha', 'co2', 'humo', 'temperatura', 'humedad'))
     return JsonResponse({'datos': datos_json})
 
 def dashboard(request):
