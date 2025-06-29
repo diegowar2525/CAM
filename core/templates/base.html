@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Jeremy Jeampierre Cuadrado Crespo">
+        <meta name="description" content="{% block pag_descrip %}{% endblock pag_descrip %}">
+
+        {% comment  %} Archivo css general {% endcomment %}
+        <link rel="stylesheet" href="{% static "css/base/base.css" %}">
+
+        {% comment %} Bloque reutilizable para ponerle titulo en cada uno de los templates {% endcomment %}
+        <title>{% block pag_title %}{% endblock pag_title %}</title>
+
+        {% comment %} Bloque reutilizable para colocar iconos en cada uno de los templates {% endcomment %}
+        <link rel="icon" href="{% block icon_pag %}{% endblock icon_pag %}">
+
+        {% comment %} Bloque reutilizable para colocar más css en cada uno de los templates {% endcomment %}
+        {% block css_files %}{% endblock css_files %}
+
+        {% comment %} ----------------------------------------------------- {% endcomment %}
+        {% comment %} Librerías {% endcomment %}
+        {% comment %} Fontawesome (íconos) {% endcomment %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+        {% comment %} ----------------------------------------------------- {% endcomment %}
+        {% comment %} Fuentes {% endcomment %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        {% comment %} Fuente Playpen Sans {% endcomment %}
+        <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+
+        {% comment %} Fuente Tiny5 {% endcomment %}
+        <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+
+        {% comment %} Fuente Ubuntu Mono {% endcomment %}
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        {% block content %}{% endblock content %}
+
+        {% comment %}  Librerias {% endcomment %}
+        {% comment %} SweetAlert2 (alertas llamativas y responsive) {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {% comment %} Bloque reutilizable para colocar más JS en cada uno de los templates {% endcomment %}
+        {% block js_files %}{% endblock js_files %}
+    </body>
+</html>
