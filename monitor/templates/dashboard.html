@@ -32,6 +32,8 @@
         .chart-card { background: #2c3447; border-radius: 10px; padding: 18px 12px 10px 12px; display: flex; flex-direction: column; align-items: center; min-width: 155px; min-height: 165px; box-shadow: 0 2px 10px 0 rgba(20,40,80,0.07); }
         .chart-card span { margin-bottom: 9px; color: #a3b6d6; font-size: 1.07rem; }
         .captura-activa {background: #f14646 !important;}
+        .custom-divider { height: 18px; background: #1a202c; margin: 18px 0 16px 0; border-radius: 20px; width: 120%; align-self: center;}
+
         @media (max-width: 850px) { .graphics-grid { flex-direction: column; align-items: center;} .chart-card { width: 98%; min-width: 0;} }
         
     </style>
@@ -74,11 +76,14 @@
                 <div class="updated">Última actualización:<br>
                     <span id="updatedTime">--</span>
                 </div>
+                <div class="custom-divider"></div>
+                <h2>Gráficos</h2>
 
             <div class="chart-container">
                         <h3>Humedad (%)</h3>
                         <canvas id="humedadPie" width="250" height="150" width="250" height="150"></canvas>
             </div>
+            <div class="custom-divider"></div>
             <div class="chart-container">
                         <h3>Presencia de Humo (%)</h3>
                         <canvas id="humoPie"></canvas>
@@ -86,26 +91,22 @@
 
             </div>
 
-        <div class="">
-                
-                    
-
-                
-
-        </div>
+       
        
         <!-- Panel Derecho -->
         <div class="panel right-panel">
                 <h2>Gráficos</h2>
                
                     <div class="chart-container">
-                        <h3>CO₂ (Tendencia)</h3>
-                        <canvas id="co2Chart" width="350" height="110"></canvas>
+                        <h3>CO₂</h3>
+                        <canvas id="co2Chart" width="400" height="222"></canvas>
                     </div>
+                    <div class="custom-divider"></div>
                     <div class="chart-container">
-                        <h3>Temperatura (Tendencia)</h3>
-                        <canvas id="tempChart" width="350" height="110"></canvas>
+                        <h3>Temperatura</h3>
+                        <canvas id="tempChart" width="400" height="261"></canvas>
                     </div>
+                    <div class="custom-divider"></div>
                  <div class="graphics-grid">
                     
                     
