@@ -1,0 +1,261 @@
+body {
+        background: #1a202c;
+        color: #fff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+}
+
+.header {
+        padding: 24px 0 18px 0;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+}
+
+.container {
+        display: flex;
+        flex-direction: row;
+        padding: 36px 3vw 0 3vw;
+        gap: 24px;
+}
+
+.panel {
+        background: #222939;
+        border-radius: 14px;
+        padding: 28px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+}
+
+.left-panel {
+        max-width: 370px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex-grow: 0;
+        min-height: 100%;
+}
+
+.right-panel {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+}
+
+.big-btn {
+        width: 100%;
+        background: #2476e5;
+        color: #fff;
+        padding: 18px 0;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        cursor: pointer;
+}
+
+.big-btn[disabled] {
+        background: #324d79;
+        cursor: not-allowed;
+}
+
+.status-row {
+        margin-bottom: 16px;
+        color: #8ca3c6;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+}
+
+.status-row .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background: #3574f0;
+        animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+        to {
+                opacity: 0.4;
+        }
+}
+
+.measure-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-bottom: 12px;
+        justify-content: center;
+}
+
+.card {
+        background: #2c3447;
+        border-radius: 8px;
+        padding: 13px 17px;
+        text-align: center;
+        min-width: 70px;
+        max-width: 110px;
+        flex: 1 1 78px;
+}
+
+.card span {
+        display: block;
+        font-size: 1.05rem;
+        color: #b9c9dd;
+}
+
+.card .val {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #fff;
+}
+
+.quality-good,
+.quality-bad {
+        border-radius: 8px;
+        text-align: center;
+        padding: 12px 0;
+        font-weight: bold;
+        margin-bottom: 16px;
+}
+
+.quality-good {
+        background: #1dad4c;
+        color: #fff;
+}
+
+.quality-bad {
+        background: #f14646;
+        color: #fff;
+}
+
+.updated {
+        font-size: 0.98rem;
+        color: #b9c9dd;
+}
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #222939;
+        border-radius: 8px;
+        overflow: hidden;
+}
+
+th,
+td {
+        padding: 10px;
+        border-bottom: 1px solid #33394d;
+}
+
+th {
+        color: #a3b6d6;
+        font-weight: bold;
+}
+
+tr:last-child td {
+        border-bottom: none;
+}
+
+.graphics-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: center;
+        margin-bottom: 28px;
+}
+
+.chart-card {
+        background: #2c3447;
+        border-radius: 10px;
+        padding: 18px 12px 10px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 155px;
+        min-height: 165px;
+        box-shadow: 0 2px 10px 0 rgba(20, 40, 80, 0.07);
+}
+
+.chart-card span {
+        margin-bottom: 9px;
+        color: #a3b6d6;
+        font-size: 1.07rem;
+}
+
+.captura-activa {
+        background: #f14646 !important;
+}
+
+.custom-divider {
+        height: 18px;
+        background: #1a202c;
+        margin: 18px 0 16px 0;
+        border-radius: 20px;
+        width: 120%;
+        align-self: center;
+}
+
+@media (max-width: 850px) {
+        .graphics-grid {
+                flex-direction: column;
+                align-items: center;
+        }
+
+        .chart-card {
+                width: 98%;
+                min-width: 0;
+        }
+}
+
+@media (max-width: 600px) {
+        .container {
+                flex-direction: column;
+                padding: 24px 3vw;
+        }
+
+        .left-panel,
+        .right-panel {
+                width: 100%;
+        }
+
+        .panel {
+                padding: 20px;
+        }
+
+        .big-btn {
+                font-size: 1.1rem;
+        }
+}
+
+@media (max-width: 400px) {
+        .header {
+                font-size: 1.5rem;
+        }
+
+        .status-row {
+                font-size: 0.95rem;
+        }
+
+        .card {
+                min-width: 60px;
+                max-width: 90px;
+        }
+
+        .card span {
+                font-size: 0.9rem;
+        }
+
+        .card .val {
+                font-size: 1.3rem;
+        }
+}

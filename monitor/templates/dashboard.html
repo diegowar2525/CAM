@@ -1,316 +1,110 @@
 {% extends "base.html" %}
+
 {% load static %}
-
-
 
 {% block title %}Página de Monitoreo{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Monitoreo de Calidad del Aire</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="{% static 'css/styled.css' %}">
-    <style>
-        
-    </style>
-</head>
+
+<title>Monitoreo de Calidad del Aire</title>
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
 <body>
-    
-<div class="header">Monitoreo de Calidad del Aire</div>
+
+    <div class="header">Monitoreo de Calidad del Aire</div>
     <div class="container">
         <!-- Panel Izquierdo -->
-        
-            <div class="panel left-panel">
-                <!-- Botón para iniciar la captura de datos -->
-                <button class="big-btn" id="captura-btn" onclick="toggleCaptura()">Iniciar Captura</button>
 
-                <div class="status-row"><span class="dot"></span><span id="statusText">Esperando datos</span></div>
-                <div class="measure-cards">
-                    <div class="card">
-                        <span>CO<sub>2</sub></span>
-                        <span class="val" id="co2val">--</span>
-                        <span>ppm</span>
-                    </div>
-                    <div class="card">
-                        <span>Humo</span>
-                        <span class="val" id="pm25val">--</span>
-                        <span>¿Presente?</span>
-                    </div>
-                    <div class="card">
-                        <span>Temperatura</span>
-                        <span class="val" id="tempval">--</span>
-                        <span>°C</span>
-                    </div>
-                    <div class="card">
-                        <span>Humedad</span>
-                        <span class="val" id="humeval">--</span>
-                        <span>%</span>
-                    </div>
+        <div class="panel left-panel">
+            <!-- Botón para iniciar la captura de datos -->
+            <button class="big-btn" id="captura-btn" onclick="toggleCaptura()">Iniciar Captura</button>
+
+            <div class="status-row"><span class="dot"></span><span id="statusText">Esperando datos</span></div>
+            <div class="measure-cards">
+                <div class="card">
+                    <span>CO<sub>2</sub></span>
+                    <span class="val" id="co2val">--</span>
+                    <span>ppm</span>
                 </div>
-                <div class="quality-good" id="qualText">Bueno</div>
-                <div class="updated">Última actualización:<br>
-                    <span id="updatedTime">--</span>
+                <div class="card">
+                    <span>Humo</span>
+                    <span class="val" id="pm25val">--</span>
+                    <span>¿Presente?</span>
                 </div>
-                <div class="custom-divider"></div>
-                <h2>Gráficos</h2>
+                <div class="card">
+                    <span>Temperatura</span>
+                    <span class="val" id="tempval">--</span>
+                    <span>°C</span>
+                </div>
+                <div class="card">
+                    <span>Humedad</span>
+                    <span class="val" id="humeval">--</span>
+                    <span>%</span>
+                </div>
+            </div>
+            <div class="quality-good" id="qualText">Bueno</div>
+            <div class="updated">Última actualización:<br>
+                <span id="updatedTime">--</span>
+            </div>
+            <div class="custom-divider"></div>
+            <h2>Gráficos</h2>
 
             <div class="chart-container">
-                        <h3>Humedad (%)</h3>
-                        <canvas id="humedadPie" width="250" height="150" width="250" height="150"></canvas>
+                <h3>Humedad (%)</h3>
+                <canvas id="humedadPie" width="250" height="150" width="250" height="150"></canvas>
             </div>
             <div class="custom-divider"></div>
             <div class="chart-container">
-                        <h3>Presencia de Humo (%)</h3>
-                        <canvas id="humoPie"></canvas>
+                <h3>Presencia de Humo (%)</h3>
+                <canvas id="humoPie"></canvas>
             </div>
 
-            </div>
-
-       
-       
-        <!-- Panel Derecho -->
+        </div>
+        
+        <!-- !Panel Derecho -->
         <div class="panel right-panel">
-                <h2>Gráficos</h2>
-               
-                    <div class="chart-container">
-                        <h3>CO₂</h3>
-                        <canvas id="co2Chart" width="400" height="222"></canvas>
-                    </div>
-                    <div class="custom-divider"></div>
-                    <div class="chart-container">
-                        <h3>Temperatura</h3>
-                        <canvas id="tempChart" width="400" height="261"></canvas>
-                    </div>
-                    <div class="custom-divider"></div>
-                 <div class="graphics-grid">
-                    
-                    
-                </div>
+            <h2>Gráficos</h2>
 
-                <h2>Últimos Datos</h2>
-                    <table border="1" id="tabla-datos">
-                        <tr>
-                            
-                            <th>CO₂(ppm)</th>
-                            <th>Humo</th>
-                            <th>Temp(°C)</th>
-                            <th>Humedad(%)</th>
-                        </tr>
-                        <!-- Aquí se llenarán los datos dinámicamente -->
-        
-        </div>            </table>
+            <div class="chart-container">
+                <h3>CO₂</h3>
+                <canvas id="co2Chart" width="400" height="222"></canvas>
+            </div>
+            <div class="custom-divider"></div>
+            <div class="chart-container">
+                <h3>Temperatura</h3>
+                <canvas id="tempChart" width="400" height="261"></canvas>
+            </div>
+            <div class="custom-divider"></div>
+            <div class="graphics-grid">
+
+
+            </div>
+
+            <h2>Últimos Datos</h2>
+            <table border="1" id="tabla-datos">
+                <tr>
+
+                    <th>CO₂(ppm)</th>
+                    <th>Humo</th>
+                    <th>Temp(°C)</th>
+                    <th>Humedad(%)</th>
+                </tr>
+                <!-- Aquí se llenarán los datos dinámicamente -->
+
+        </div>
+        </table>
     </div>
-</div>
-
-    <script>
-
-
-    
-        let capturaActiva = false;
-
-        function toggleCaptura() {
-            if (!capturaActiva) {
-                //Iniciar-Captura
-                // Función para iniciar la captura de datos
-                    fetch('/iniciar-captura/')
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === 'OK') {
-                                capturaActiva = true;
-                                document.getElementById('captura-btn').innerText = "Detener Captura";
-                                document.getElementById('captura-btn').classList.add("captura-activa");
-                            } else {
-                                alert('Error: ' + data.message);
-                            }
-                        })
-                        .catch(error => {
-                            alert('Error: ' + error.message);
-                        });
-                
-
-            }else{
-                fetch('/detener-captura/')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'OK') {
-                            capturaActiva = false;
-                            document.getElementById('captura-btn').innerText = "Iniciar Captura";
-                            document.getElementById('captura-btn').classList.remove("captura-activa");
-                        } else {
-                            alert('Error: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        alert('Error: ' + error.message);
-                    });
-                }
-            
-
-        }
-
-         // Función para convertir 0/1 a Sí/No
-        function convertirHumo(humo) {
-            return humo === 1 ? '  SI  ' : '  NO  ';
-        }
-
-        // Función para obtener los últimos datos de la base de datos
-        function obtenerDatos() {
-            fetch('/obtener-datos/')
-                .then(response => response.json())
-                .then(data => {
-                    const tabla = document.getElementById('tabla-datos');
-                    // Limpiar la tabla antes de agregar los nuevos datos
-                    tabla.innerHTML = `
-                        <tr>
-                            
-                            <th>CO₂ (ppm)</th>
-                            <th>Humo</th>
-                            <th>Temp(°C)</th>
-                            <th>Humedad %</th>
-
-                        </tr>
-                    `;
-                    // Agregar los nuevos datos a la tabla
-
-                    
-                    data.datos.forEach(dato => {
-                        const fila = tabla.insertRow();
-                        fila.innerHTML = `
-                            
-                            <td>${dato.co2}</td>
-                            <td>${convertirHumo(dato.humo)}</td>
-                            <td>${dato.temperatura}</td>
-                            <td>${dato.humedad}%</td>
-                        `;
-                        if (data.datos.length > 0) {
-                            const primer = data.datos[0];
-                            // También actualizamos los valores en las tarjetas de CO₂, Humo, y Temperatura
-                            document.getElementById('co2val').innerText = primer.co2;
-                            document.getElementById('pm25val').innerText = convertirHumo(primer.humo);
-                            document.getElementById('tempval').innerText = primer.temperatura;
-                            document.getElementById('humeval').innerText = primer.humedad;
-                            let fechaISO = dato.fecha;
-                            let fechaObj = new Date(fechaISO);
-                            let fechaLegible = fechaObj.toLocaleString('es-EC', {
-                                year: "numeric", month: "2-digit", day: "2-digit",
-                                hour: "2-digit", minute: "2-digit", second: "2-digit"
-                            });
-                            document.getElementById('updatedTime').innerText = fechaLegible;
-
-                            
-                            // Actualizamos el estado de la calidad del aire (bueno o malo)
-                            let qualDiv = document.getElementById('qualText');
-                            let co2 = parseFloat(dato.co2);
-                            qualDiv.className = co2 > 300 ? 'quality-bad' : 'quality-good';
-                            qualDiv.innerText = co2 > 300 ? 'Calidad de aire Mala' : 'Calidad de aire Buena';
-                        }
-
-
-                    });
-                    
-                    actualizarCharts(data.datos);
-                })
-                .catch(error => {
-                    console.error('Error al obtener los datos:', error);
-                });
-        }
-
-        // Llamada inicial para cargar los datos
-        obtenerDatos();
-
-        // Actualizar los datos cada 5 segundos para mostrar los nuevos datos
-        setInterval(obtenerDatos, 1000);
-                // INICIALIZA CHARTS VACÍOS
-        let co2Chart, tempChart, humedadPie, humoPie;
-
-        function crearCharts() {
-            // CO₂ Line Chart
-            const ctxCO2 = document.getElementById('co2Chart').getContext('2d');
-            co2Chart = new Chart(ctxCO2, {
-                type: 'line',
-                data: { labels: [], datasets: [{ label: 'CO₂ (ppm)', data: [], borderColor: '#47a6ff', fill: false }] },
-                options: { responsive: true, scales: { x: { title: { display: true, text: 'Muestra' }}, y: { beginAtZero: true, title: { display: true, text: 'ppm' }}} }
-            });
-
-            // Temperatura Line Chart
-            const ctxTemp = document.getElementById('tempChart').getContext('2d');
-            tempChart = new Chart(ctxTemp, {
-                type: 'line',
-                data: { labels: [], datasets: [{ label: 'Temperatura (°C)', data: [], borderColor: '#43e17d', fill: false }] },
-                options: { responsive: true, scales: { x: { title: { display: true, text: 'Muestra' }}, y: { beginAtZero: false, title: { display: true, text: '°C' }}} }
-            });
-
-            // Humedad Pie Chart (solo del último dato)
-            const ctxHumedad = document.getElementById('humedadPie').getContext('2d');
-            humedadPie = new Chart(ctxHumedad, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Humedad', 'Resto'],
-                    datasets: [{ data: [0, 100], backgroundColor: ['#28e7e2', '#353c46'] }]
-                },
-                options: { responsive: true }
-            });
-
-            // Humo Pie Chart (porcentaje de sí/no en el dataset)
-            const ctxHumo = document.getElementById('humoPie').getContext('2d');
-            humoPie = new Chart(ctxHumo, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Sí', 'No'],
-                    datasets: [{ data: [0, 0], backgroundColor: ['#f14646', '#8ca3c6'] }]
-                },
-                options: { responsive: true }
-            });
-        }
-
-        // ACTUALIZA CHARTS CUANDO LLEGAN DATOS
-        function actualizarCharts(datos) {
-
-            const datosInvertidos = [...datos].reverse();
-
-            // Gráfico de línea CO₂
-           co2Chart.data.labels = datosInvertidos.map(d => {
-                // Puedes personalizar el formato aquí:
-                let fecha = new Date(d.fecha);
-                // Ejemplo: "27/06/2025 16:34:28"
-                return fecha.toLocaleString('es-EC', {
-                    hour: "2-digit", minute: "2-digit", second: "2-digit"
-                });
-            });
-            co2Chart.data.datasets[0].data = datosInvertidos.map(d => d.co2);
-            co2Chart.update();
-
-            // Gráfico de línea Temperatura
-
-            tempChart.data.labels = datosInvertidos.map(d => {
-                let fecha = new Date(d.fecha);
-                return fecha.toLocaleString('es-EC', {
-                    hour: "2-digit", minute: "2-digit", second: "2-digit"
-                });
-            });
-            tempChart.data.datasets[0].data = datosInvertidos.map(d => d.temperatura);
-            tempChart.update();
-
-            // Gráfico de pastel de humedad (último dato)
-            let hum = datosInvertidos[datosInvertidos.length-1]?.humedad || 0;
-            humedadPie.data.datasets[0].data = [hum, 100-hum];
-            humedadPie.update();
-
-            // Gráfico de pastel de humo (% sí/no)
-            let total = datosInvertidos.length;
-            let si = datosInvertidos.filter(d => d.humo == 1).length;
-            let no = total - si;
-            humoPie.data.datasets[0].data = [si, no];
-            humoPie.update();
-        }
-
-        // CREAR CHARTS al cargar la página
-        crearCharts();
-        
-    </script>
+    </div>
 </body>
+
 </html>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+
 {% endblock %}
