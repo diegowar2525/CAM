@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Registrarse | WordCounter{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<div class="register-container">
+    <!-- Sección del formulario -->
+    <div class="register-left">
+        <h2 class="register-title">Crear cuenta</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="input-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <p class="error">{{ field.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="register-btn">Registrarse</button>
+        </form>
+    </div>
+
+    <!-- Sección de la imagen -->
+    <div class="register-right">
+        <img src="{% static 'images/register.png' %}" alt="Imagen de registro">
+    </div>
+</div>
+{% endblock %}

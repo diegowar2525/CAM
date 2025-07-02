@@ -3,7 +3,7 @@ let capturaActiva = false;
 function toggleCaptura() {
     if (!capturaActiva) {
         // Iniciar Captura
-        fetch('/iniciar-captura/')
+        fetch('/monitor/iniciar-captura/')
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'OK') {
@@ -19,7 +19,7 @@ function toggleCaptura() {
             });
     } else {
         // Detener Captura
-        fetch('/detener-captura/')
+        fetch('/monitor/detener-captura/')
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'OK') {
@@ -43,7 +43,7 @@ function convertirHumo(humo) {
 
 // Obtiene los últimos datos de la base de datos y actualiza la tabla y tarjetas
 function obtenerDatos() {
-    fetch('/obtener-datos/')
+    fetch('/monitor/obtener-datos/')
         .then(response => response.json())
         .then(data => {
             const tabla = document.getElementById('tabla-datos');

@@ -12,15 +12,55 @@
     </div>
 
     <div class="panel-title">Calidad del Aire — Resumen Anual</div>
-    <div class="panel-desc">
-        Observa cómo ha cambiado la calidad del aire en los últimos años.<br>
-        <b>¡Cuidar el ambiente es responsabilidad de todos!</b>
+        <div class="panel-desc">
+            Observa cómo ha cambiado la calidad del aire en los últimos años.<br>
+            <b>¡Cuidar el ambiente es responsabilidad de todos!</b>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Tendencia de Calidad del Aire (2018 - 2024)</div>
+            <canvas id="qualityChart" width="600" height="260"></canvas>
+        </div>
+       
+        
     </div>
-    <div class="chart-card">
-        <div class="chart-title">Tendencia de Calidad del Aire (2018 - 2024)</div>
-        <canvas id="qualityChart" width="600" height="260"></canvas>
-    </div>
-</div>
+
+        <div class="project-info">
+        <h3>Sobre el Proyecto</h3>
+        <div class="project-content">
+            <div class="project-text">
+                <p>
+                    Este es un sistema de monitoreo de calidad del aire en tiempo real, que utiliza sensores como el MQ135, MQ2 y un sensor de temperatura para captar los datos. 
+                    Los datos son capturados por un dispositivo conectado y se visualizan en esta página. 
+                    El objetivo es proporcionar información precisa y actualizada sobre la calidad del aire en diversas ubicaciones, para ayudar en la toma de decisiones que contribuyan a un ambiente más saludable.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="{% static 'images/pro.jpg' %}" alt="Imagen del Proyecto" class="project-image">
+            </div>
+        </div>
+
+        <!-- Sección de Sensores Usados -->
+        <div class="sensors-list">
+            <h4>Sensores Usados</h4>
+            <div class="sensor-cards">
+                <div class="sensor-card">
+                    <img src="{% static 'images/mq135.png' %}" alt="MQ135" class="sensor-image">
+                    <h5>MQ135</h5>
+                    <p>Sensor de calidad del aire, detecta gases como amoníaco, dióxido de carbono, y más.</p>
+                </div>
+                <div class="sensor-card">
+                    <img src="{% static 'images/mq2.png' %}" alt="MQ135" class="sensor-image">
+                    <h5>MQ2</h5>
+                    <p>Sensor de gases que detecta metano, alcohol, humo, entre otros.</p>
+                </div>
+                <div class="sensor-card">
+                    <img src="{% static 'images/Sensor-DTH11.png' %}" alt="Sensor de Temperatura" class="sensor-image">
+                    <h5>Sensor de Temperatura</h5>
+                    <p>Medición de la temperatura ambiental para complementar los datos de calidad del aire.</p>
+                </div>
+            </div>
+        </div>
+
 </div>
 
 </body>

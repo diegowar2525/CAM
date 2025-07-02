@@ -3,9 +3,11 @@ import os
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import AirQuality
+from django.contrib.auth.decorators import login_required
 
 pid_file = "captura_pid.txt"
 
+@login_required
 def iniciar_captura(request):
     try:
         process = subprocess.Popen(["python", "captura_serial.py"])  # Inicia el proceso
@@ -19,6 +21,7 @@ def iniciar_captura(request):
         return JsonResponse({"status": "Error", "message": str(e)})
 
 
+@login_required
 def obtener_datos(request):
     # Recupera los últimos datos de calidad del aire
     datos = AirQuality.objects.order_by("-fecha")[:10]
@@ -26,6 +29,7 @@ def obtener_datos(request):
     return JsonResponse({"datos": datos_json})
 
 
+@login_required
 def detener_captura(request):
     try:
         # Leer el PID desde el archivo
@@ -50,5 +54,6 @@ def detener_captura(request):
         return JsonResponse({"status": "Error", "message": str(e)})
 
 
+@login_required
 def dashboard(request):
     return render(request, "dashboard.html")

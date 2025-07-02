@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Página de Monitoreo{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/contac.css' %}">
+
+<div class="container">
+        <h1 class="title">Conoce al equipo</h1>
+        <div class="contact-cards">
+            <!-- Carta 1 -->
+            <div class="contact-card">
+                <img src="{% static 'images/deplo.jpg' %}" alt="Persona 1" class="contact-photo">
+                <div class="contact-info">
+                    <h3 class="contact-name">Damián Alexander Guerrero</h3>
+                    <p class="contact-role">Estudiante de Ingenieria en software programador arduino.</p>
+                    <p class="contact-email">dguerreror@unemi.edu.ec</p>
+                </div>
+            </div>
+
+            <!-- Carta 2 -->
+            <div class="contact-card">
+                <img src="{% static 'images/deplo.jpg' %}" alt="Persona 2" class="contact-photo">
+                <div class="contact-info">
+                    <h3 class="contact-name">Wiliam Jesús Sanchez </h3>
+                    <p class="contact-role">Estudiante de Ingenieria en software Programador web</p>
+                    <p class="contact-email">wgarcias4@unemi.edu.ec</p>
+                </div>
+            </div>
+
+            <!-- Carta 3 -->
+            <div class="contact-card">
+                <img src="{% static 'images/deplo.jpg' %}" alt="Persona 3" class="contact-photo">
+                <div class="contact-info">
+                    <h3 class="contact-name">Jeremy Jeampierre Cuadrado</h3>
+                    <p class="contact-role">Estudiante de Ingenieria en software Programador Arduino</p>
+                    <p class="contact-email">jcuadradoc@unemi.edu.ec</p>
+                </div>
+            </div>
+
+            <!-- Carta 4 -->
+            <div class="contact-card">
+                <img src="{% static 'images/deplo.jpg' %}" alt="Persona 4" class="contact-photo">
+                <div class="contact-info">
+                    <h3 class="contact-name">Roberto Antonio García</h3>
+                    <p class="contact-role">Estudiante de Ingenieria en software Desarrollador web</p>
+                    <p class="contact-email">rgarciat2@unemi.edu.ec</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/home.js' %}"></script>
+
+{% endblock %}

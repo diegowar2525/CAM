@@ -1,0 +1,140 @@
+/* Contenedor principal para el registro */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh; /* Asegura que el contenedor ocupe el 100% de la altura de la pantalla */
+    background-color: #171e2a; /* Fondo similar al del login */
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario de registro */
+.register-left {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #232a36; /* Fondo oscuro para el formulario */
+    color: #f1f5fa;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.register-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #7bcfff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 1.1rem;
+    color: #b4bdcd;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444c60;
+    background-color: #2c3447;
+    color: #fff;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.input-group input:focus {
+    border-color: #7bcfff;
+    outline: none;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.register-btn {
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.register-btn:hover {
+    background-color: #45a049;
+}
+
+.register-btn:active {
+    background-color: #388e3c;
+}
+
+/* Sección de la imagen */
+.register-right {
+    flex: 1;
+    background-color: #333a48;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.register-right img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%; /* Asegura que la imagen ocupe toda la altura del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin deformarse */
+    border-radius: 0 20px 20px 0;
+    transition: transform 0.3s ease;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .register-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .register-left, .register-right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .register-title {
+        font-size: 2rem;
+    }
+
+    .register-right {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .register-right img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}

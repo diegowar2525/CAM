@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Página de Monitoreo{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="main-content">
+    <div class="login-container">
+        <!-- Sección del formulario -->
+        <div class="login-left">
+            <h2 class="login-title">Iniciar sesión</h2>
+            <form method="post" class="login-form" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                
+                {% for field in form %}
+                <div class="input-group">
+                    <label for="{{ field.id_for_label }}" class="text-white">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="error">
+                        <p>{{ field.errors|striptags }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="login-btn">Entrar</button>
+            </form>
+        </div>
+
+        <!-- Sección de la imagen -->
+        <div class="login-right">
+            <img src="{% static 'images/login.png' %}" alt="Imagen de login">
+        </div>
+    </div>
+</div>
+{% endblock %}

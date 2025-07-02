@@ -21,7 +21,7 @@ body {
 }
 
 .sidebar {
-    width: 68px;
+    width: 40px;
     min-width: 68px;
     background: #232a36;
     height: 100vh;
@@ -32,7 +32,7 @@ body {
     padding-top: 24px;
     box-shadow: 2px 0 20px 0 rgba(30,40,60,0.13);
     position: relative;
-    transition: width 0.22s cubic-bezier(.4,2,.6,1);
+    transition: width 0.3s cubic-bezier(.4,2,.6,1);
     z-index: 10;
     border-radius: 0 22px 22px 0;
 }
@@ -40,6 +40,43 @@ body {
     width: 240px;
     min-width: 240px;
 }
+.sidebar .menu {
+    flex-grow: 1;  /* Esto hará que los otros elementos de la barra lateral se expandan y ocupen el espacio restante */
+}
+
+.sidebar .button {
+    width: 100%;  /* El botón ocupa todo el ancho del sidebar */
+    padding: 12px 24px;
+    background-color: #232a36;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    transition: width 0.3s ease;  /* Transición suave para el tamaño */
+}
+.sidebar.closed { 
+    height: 3px;
+    width: 68px;  /* Ancho cuando el menú está cerrado */
+}
+
+.sidebar.closed .button {
+    width: 50px;  /* El botón se reduce cuando el sidebar está cerrado */
+    height: 50px;  /* Altura fija para el botón */
+    padding: 8px;
+}
+
+.sidebar.closed .menu a {
+    width: 50px;  /* El enlace tiene el mismo ancho que el botón reducido */
+    padding: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+}
+.sidebar:not(.closed) .menu a {
+    font-size: 1.13rem;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -97,8 +134,32 @@ body {
 }
 .menu a.active, .menu a:hover {
     background: #1e2534;
-    color: #71faaf;
+    color: #aabbca;
 }
+
+.menu button {
+    text-decoration: none;
+    color: #b8c1d2;
+    font-size: 1.13rem;
+    padding: 0 !important;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.16s, color 0.16s, padding 0.18s, width 0.18s, justify-content 0.18s, height 0.18s;
+    min-height: 0 !important;
+    height: 32px !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+.sidebar:hover .menu button {
+    justify-content: flex-start;
+    padding: 10px 18px !important;
+    height: 40px !important;
+}
+
 .icon {
     width: 22px;
     min-width: 22px;
@@ -215,6 +276,203 @@ body {
     box-shadow: 0 -2px 16px 0 rgba(30,40,60,0.09);
     letter-spacing: 1px;
 }
+
+/* Sección de información sobre el proyecto */
+.project-info {
+    background: #222939;
+    color: #f1f5fa;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 4px 20px rgba(20,40,80,0.1);
+    text-align: center;
+}
+
+.project-info h3 {
+    font-size: 2rem;
+    color: #7bcfff;
+    margin-bottom: 15px;
+}
+
+.project-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-text {
+    flex: 1;
+    max-width: 50%;
+    font-size: 1.2rem;
+    color: #c5d1df;
+    line-height: 1.6;
+}
+
+.image-container {
+    flex: 1;
+    max-width: 40%;
+    text-align: center;
+}
+
+.project-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(20,40,80,0.2);
+    max-height: 300px;
+}
+
+/* Estilo del botón */
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background-color: #4CAF50; /* Fondo verde */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.button:hover {
+    background-color: #45a049; /* Color más oscuro de verde al pasar el ratón */
+    transform: translateY(-2px); /* Mueve el botón hacia arriba */
+}
+
+/* Efecto de presionar el botón */
+.button:active {
+    background-color: #388e3c; /* Color aún más oscuro cuando se presiona */
+    transform: translateY(1px); /* Desplaza el botón hacia abajo */
+}
+
+/* Estilo del botón de peligro (por ejemplo, para eliminar) */
+.button-danger {
+    background-color: #e74c3c; /* Fondo rojo */
+}
+
+.button-danger:hover {
+    background-color: #c0392b; /* Rojo más oscuro al pasar el ratón */
+}
+
+.button-danger:active {
+    background-color: #d32f2f; /* Rojo aún más oscuro al presionar */
+}
+
+
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 850px) {
+    .project-info {
+        padding: 20px;
+    }
+
+    .project-info h3 {
+        font-size: 1.7rem;
+    }
+
+    .project-text {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .project-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-image {
+        max-height: 200px;
+        margin-top: 20px;
+    }
+}
+
+
+/* Estilo de la lista de sensores */
+.sensors-list {
+    background: #222939;
+    color: #f1f5fa;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 4px 20px rgba(20,40,80,0.1);
+    text-align: center;
+}
+
+.sensors-list h4 {
+    font-size: 2rem;
+    color: #7bcfff;
+    margin-bottom: 20px;
+}
+
+.sensor-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.sensor-card {
+    background: #2c3447;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(20,40,80,0.2);
+    width: 250px;
+    text-align: center;
+}
+
+.sensor-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Limitar la altura de la imagen */
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.sensor-card h5 {
+    font-size: 1.4rem;
+    color: #88f3c1;
+    margin-bottom: 10px;
+}
+
+.sensor-card p {
+    font-size: 1rem;
+    color: #c5d1df;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 850px) {
+    .sensors-list {
+        padding: 20px;
+    }
+
+    .sensor-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .sensor-card h5 {
+        font-size: 1.3rem;
+    }
+
+    .sensor-card p {
+        font-size: 0.9rem;
+    }
+}
+
 
 @media (max-width: 850px) {
     .sidebar { width: 50px !important; padding-top: 14px;}

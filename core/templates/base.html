@@ -12,23 +12,46 @@
         <div class="sidebar">
             <div class="logo">
                 <span>
-                    <a href="{% url 'index' %}">Aire limpio</a>
+                    <a href="{% url 'home' %}">Aire limpio</a>
                 </span>
             </div>
             <div class="menu">
-                <a href="/login" class="active">
-                    <span class="icon"><img src="{% static 'images/iniciar-sesion.png' %}" alt="icono"></span>
-                    <span class="menu-text">Iniciar sesión</span>
-                </a>
-                <a href="/dashboard">
-                    <span class="icon"><img src="{% static 'images/tablero.png' %}" alt="icono"></span>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-200 rounded-md">
+                        {% csrf_token %}
+                        <button type="submit" id="logout-button" class="button" >
+                            <span class="icon mr-2">
+                                <img src="{% static 'images/cerrar-sesion.png' %}" alt="icono" class="w-6 h-6">
+                            </span>
+                            <span class="menu-text">Cerrar sesión</span>
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'register' %}" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-200 rounded-md">
+                        <span class="icon mr-2">
+                            <img src="{% static 'images/registrarse.png' %}" alt="icono" class="w-6 h-6">
+                        </span>
+                        <span class="menu-text">Registrarse</span>
+                    </a>
+                    <a href="{% url 'login' %}" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-200 rounded-md">
+                        <span class="icon mr-2">
+                            <img src="{% static 'images/iniciar-sesion.png' %}" alt="icono" class="w-6 h-6">
+                        </span>
+                        <span class="menu-text">Iniciar sesión</span>
+                    </a>
+                {% endif %}
+                <a href="{% url 'dashboard' %}" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-200 rounded-md">
+                    <span class="icon mr-2">
+                        <img src="{% static 'images/tablero.png' %}" alt="icono" class="w-6 h-6">
+                    </span>
                     <span class="menu-text">Monitor en tiempo real</span>
                 </a>
-                <a href="/contacto">
-                    <span class="icon">📩</span>
+                <a href="{% url 'contact' %}" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-200 rounded-md">
+                    <span class="icon mr-2 text-xl">📩</span>
                     <span class="menu-text">Contáctanos</span>
                 </a>
             </div>
+
         </div>
         <div class="main-content">
             {% block content %}

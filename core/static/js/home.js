@@ -39,3 +39,36 @@ const qualityChart = new Chart(ctx, {
         }
     }
 });
+// Obtener los elementos
+const sidebar = document.querySelector('.sidebar');
+const logoutForm = document.querySelector('#logout-form');
+const logoutButton = document.querySelector('#logout-button');
+
+// Cuando el mouse entra en el sidebar (menu abierto)
+sidebar.addEventListener('mouseenter', () => {
+    // Asegurarse de que el botón esté presente cuando el menú está abierto
+    if (logoutForm.querySelector('a')) {
+        const button = document.createElement('button');
+        button.type = 'submit';  // Tipo submit para que funcione con el formulario
+        button.id = 'logout-button';
+        button.classList.add('button');
+        button.textContent = 'Cerrar sesión';
+
+        // Reemplazar el <a> con el <button>
+        logoutForm.replaceChild(button, logoutForm.querySelector('a'));
+    }
+});
+
+// Cuando el mouse sale del sidebar (menu cerrado)
+sidebar.addEventListener('mouseleave', () => {
+    // Asegurarse de que el enlace esté presente cuando el menú está cerrado
+    if (logoutForm.querySelector('button')) {
+        const link = document.createElement('a');
+        link.href = logoutForm.action;  // Mantén el mismo enlace de acción
+        link.classList.add('button');  // Agregar las mismas clases
+        link.textContent = 'Cerrar sesión';
+
+        // Reemplazar el <button> con el <a>
+        logoutForm.replaceChild(link, logoutForm.querySelector('button'));
+    }
+});

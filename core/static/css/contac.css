@@ -1,0 +1,102 @@
+/* Estilo general del body */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #171e2a;
+    color: #f1f5fa;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Título de la sección */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #7bcfff;
+}
+
+/* Contenedor de las cartas de contacto */
+.contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilo de cada carta de contacto */
+.contact-card {
+    background: #232a36;
+    border-radius: 12px;
+    width: 220px;  /* Ancho fijo para cada carta */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre la carta */
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen de la persona (foto) */
+.contact-photo {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Asegura que la imagen llene el espacio sin deformarse */
+    border-bottom: 3px solid #7bcfff;
+}
+
+/* Información debajo de la foto */
+.contact-info {
+    padding: 15px;
+    background: #2c3447;
+    border-radius: 0 0 12px 12px;
+}
+
+.contact-name {
+    font-size: 1.5rem;
+    color: #88f3c1;
+    margin-bottom: 10px;
+}
+
+.contact-role {
+    font-size: 1rem;
+    color: #c5d1df;
+    margin-bottom: 8px;
+}
+
+.contact-email {
+    font-size: 1rem;
+    color: #7bcfff;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contact-card {
+        width: 150px;  /* Ancho de las cartas para pantallas pequeñas */
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card {
+        width: 100%;  /* Las cartas ocupan el 100% en pantallas muy pequeñas */
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+}

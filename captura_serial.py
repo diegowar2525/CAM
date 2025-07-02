@@ -58,8 +58,6 @@ while True:
         temperatura = validar_float(datos.get('temp'), -10, 80)
         humedad = validar_float(datos.get('hum'), 0, 100)
 
-
-
         if not all([co2 is not None, humo is not None, temperatura is not None, humedad is not None]):
             print("❌ Datos inválidos, se omite esta línea:", {
                 'co2': co2,
